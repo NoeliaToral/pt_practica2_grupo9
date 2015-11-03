@@ -21,13 +21,13 @@ int main(int *argc, char *argv[])
 	//Declaracion de variables
 	SOCKET sockfd;
 	struct sockaddr_in server_in;
-	char buffer_in[2048],comprueba[1024], buffer_out[1024];
+	char buffer_in[2048],comprueba[1024], buffer_out[2048];
 	int recibidos=0,enviados=0;
 	int fallo_len=0;
 	int estado;
 	char option;
 	int intentos;
-	char username[30],destinatario[30],asunto[30],fecha[100],mensaje[1024]="",entrada [1024]=".";
+	char username[30],destinatario[30],asunto[30],fecha[1024],mensaje[1024]="",entrada [1024]=".";
 	WORD wVersionRequested;
 	WSADATA wsaData;
 	int err;
@@ -55,14 +55,13 @@ int main(int *argc, char *argv[])
 
 		if(sockfd==INVALID_SOCKET)//Comprobación de posible fallo				
 		{
-			printf("CLIENTE> ERROR AL CREAR SOCKET\r\n");
+			printf("ERROR AL CREAR SOCKET\r\n");
 			exit(-1);
 		}
 		else
 		{
-			printf("CLIENTE> SOCKET CREADO CORRECTAMENTE\r\n");
-
-			printf("CLIENTE> Introduzca la IP destino (pulsar enter para IP por defecto): ");
+			head();
+			printf("Introduzca la IP del servidor SMTP (pulsar enter para IP por defecto): ");
 			gets(ipdest);
 
 			if(strcmp(ipdest,"")==0)	//Caso por defecto
@@ -86,32 +85,39 @@ int main(int *argc, char *argv[])
 					DWORD error=GetLastError();
 					if(recibidos<0)
 					{
-						printf("CLIENTE> Error %d en la recepción de datos\r\n",error);
+						printf("Error %d en la recepción de datos\r\n",error);
 						estado=S_QUIT;
 					}
 					else
 					{
-						printf("CLIENTE> Conexión con el servidor cerrada\r\n");
+						printf("Conexión con el servidor cerrada\r\n");
 						estado=S_QUIT;
 					}
 				}
-				buffer_in[recibidos]=0x00;
-				//Presentacion del resto de datos recibidos
-				printf(buffer_in);
+				
 				do{
+					
 					//MAQUINA DE ESTADOS
 					switch(estado)
 					{
+					case S_RSET:
+						sprintf_s(buffer_out,sizeof(buffer_out),"%s%s",RS,CRLF);
+						system("cls");
+						head();
+						estado=S_HELO;
+						break;
 					case S_HELO:
+						system("cls");
+						head();
 						sprintf_s(buffer_out,sizeof(buffer_out),"%s%s",HI,CRLF);
 						break;
 					case S_USER:
-						printf("tu nombre de usuario: ");
+						printf("Username: ");
 						gets(username);
 						sprintf_s(buffer_out,sizeof(buffer_out),"MAIL FROM:<%s>%s",username,CRLF);
 						break;
 					case S_ADDRESSEE:
-						printf("Para: ");
+						printf("Destinatario: ");
 						gets(destinatario);
 						sprintf_s(buffer_out,sizeof(buffer_out),"RCPT TO:<%s>%s",destinatario,CRLF);
 						break;
@@ -124,22 +130,19 @@ int main(int *argc, char *argv[])
 						reloj(fecha);
 
 						//Asunto
-						printf("Asunto: ");
+						printf("\nAsunto: ");
 						gets(asunto);
 
 						//Cabeceras  del mensaje
 						sprintf_s(mensaje,sizeof(mensaje),"Date: %s%sFrom: %s%sTo: %s%sSubject: %s%s",fecha,CRLF,username,CRLF,destinatario,CRLF,asunto,CRLF);
-						printf("MENSAJE: \r\n");
+						printf("\nMENSAJE: (escribe un '.' para finalizar)\r\n");
 						do{
 							gets(entrada);
 							sprintf_s(mensaje,sizeof(mensaje),"%s%s%s",mensaje,CRLF,entrada);
 						}while(strncmp(entrada,".",1)!=0);
 						sprintf_s(buffer_out,sizeof(mensaje),"%s%s",mensaje,CRLF);
-
-
 						break;
-					case 6:
-						break;
+		
 					}
 					
 					
@@ -150,7 +153,7 @@ int main(int *argc, char *argv[])
 					if (enviados<0){
 						DWORD error=GetLastError();
 						
-							printf("CLIENTE> Error %d en el envio de datos%s",error,CRLF);
+							printf("Error %d en el envio de datos%s",error,CRLF);
 							break;
 					}
 
@@ -160,22 +163,38 @@ int main(int *argc, char *argv[])
 						DWORD error=GetLastError();
 						if(recibidos<0)
 						{
-							printf("CLIENTE> Error %d en la recepción de datos\r\n",error);
+							printf("Error %d en la recepción de datos\r\n",error);
 							estado=S_QUIT;
 						}
 						else
 						{
-							printf("CLIENTE> Conexión con el servidor cerrada\r\n");
+							printf("Conexión con el servidor cerrada\r\n");
 							estado=S_QUIT;
 						}
 					}
+					
 
-					//Presentacion  de datos recibidos
-					buffer_in[recibidos]=0x00;
-					printf(buffer_in);
-
+					if (strncmp(buffer_in,"554",3)==0){
+						printf("\nDicho destinatario no existe, reintentelo\r\n\n");
+					}
+					if (estado==S_MENSAJE && strncmp(buffer_in,"250",3)==0){
+						char op;
+						system("cls");
+						head();
+						printf("Mensaje enviado correctamente\r\n\n");
+						printf("Desea enviar otro mensaje[S/N]");
+						op=_getche();
+						if (op=='S' || op=='s'){
+							estado=S_RSET;
+						}
+						else{ 
+							system("cls");
+							head();
+							estado=S_QUIT;
+						}
+					}
 					//Avance de estado
-					if (strncmp(buffer_in,"2",1)==0 || strncmp(buffer_in,"3",1)==0){
+					else if(strncmp(buffer_in,"2",1)==0 || strncmp(buffer_in,"3",1)==0){
 						estado++;
 					}
 					
@@ -185,14 +204,14 @@ int main(int *argc, char *argv[])
 			}
 			else	//Error al Conectar
 			{
-				printf("CLIENTE> ERROR AL CONECTAR CON %s:%d\r\n",ipdest,TCP_SERVICE_PORT);
+				printf("ERROR AL CONECTAR CON %s:%d\r\n",ipdest,TCP_SERVICE_PORT);
 			}		
 			// fin de la conexion de transporte
 			closesocket(sockfd);
 			
 		}
 
-		printf("-----------------------\r\n\r\nCLIENTE> Volver a conectar (S/N)\r\n");
+		printf("Volver a conectar, con este u otro cliente(S/N)\r\n");
 		option=_getche();	//realizar otra conexión
 
 	}while(option!='n' && option!='N');
