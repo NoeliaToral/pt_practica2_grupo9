@@ -32,6 +32,8 @@ int main(int *argc, char *argv[])
 	WSADATA wsaData;
 	int err;
 
+	struct in_addr address;
+	int ipdestl;
     char ipdest[16];
 	char default_ip[16]="127.0.0.1";
 	system("color 0F");
@@ -64,13 +66,28 @@ int main(int *argc, char *argv[])
 			printf("Introduzca la IP del servidor SMTP (pulsar enter para IP por defecto): ");
 			gets(ipdest);
 
-			if(strcmp(ipdest,"")==0)	//Caso por defecto
-				strcpy(ipdest,default_ip);
-
+			
+				ipdestl=inet_addr(ipdest);
+				if (ipdestl==INADDR_NONE){
+					struct hostent *host;
+					host=gethostbyname(ipdest);
+					if (host!=NULL){
+						memcpy(&address,host->h_addr_list[0],4);
+						server_in.sin_addr=address;	//IP del servidor
+					}
+				}
+				else
+				{
+					if (strcmp(ipdest,"")==0){
+						strcpy(ipdest,default_ip);
+					}
+					server_in.sin_addr.s_addr=inet_addr(ipdest);//IP del servidor
+				}
+				
 			//Parametros iniciales
 			server_in.sin_family=AF_INET;	//Familia IP
 			server_in.sin_port=htons(TCP_SERVICE_PORT);		//Puerto Que vamos a usar
-			server_in.sin_addr.s_addr=inet_addr(ipdest);	//IP del servidor
+			
 			
 			enviados=0;
 			estado=S_HELO;

@@ -1,12 +1,21 @@
-﻿Compilación iniciada a las 03/11/2015 11:27:16.
+﻿Compilación iniciada a las 08/11/2015 13:37:19.
      1>Proyecto "C:\Users\emilio\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\cliente_SMTP.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt Source.c
-         Source.c
-     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\source.c(12): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\time.inl(112) : vea la declaración de 'localtime'
-     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\source.c(15): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt cliente.c
+         cliente.c
+     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(67): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : vea la declaración de 'gets'
+     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(82): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : vea la declaración de 'strcpy'
+     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(133): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : vea la declaración de 'gets'
+     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(138): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : vea la declaración de 'gets'
+     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(151): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : vea la declaración de 'gets'
+     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(157): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : vea la declaración de 'gets'
+     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(24): warning C4101: 'comprueba' : variable local sin referencia
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\emilio\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.exe" /INCREMENTAL /NOLOGO wsock32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\emilio\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\emilio\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.lib" /MACHINE:X86 Debug\cliente.obj
          Debug\Source.obj
@@ -15,4 +24,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:02.07
+Tiempo transcurrido 00:00:01.97
