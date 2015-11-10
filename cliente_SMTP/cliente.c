@@ -31,7 +31,8 @@ int main(int *argc, char *argv[])
 	WORD wVersionRequested;
 	WSADATA wsaData;
 	int err;
-
+	int salir;
+	struct hostent *host;
 	struct in_addr address;
 	int ipdestl;
     char ipdest[16];
@@ -51,7 +52,6 @@ int main(int *argc, char *argv[])
 	//Fin: Inicialización Windows sockets
 
 	do{
-		system("cls");
 		
 		sockfd=socket(AF_INET,SOCK_STREAM,0);	//Creación del socket
 
@@ -62,28 +62,42 @@ int main(int *argc, char *argv[])
 		}
 		else
 		{
-			head();
-			printf("Introduzca la IP del servidor SMTP (pulsar enter para IP por defecto): ");
-			gets(ipdest);
-
+			do{
+				system("cls");
+				head();
+				printf("Introduzca la IP del servidor SMTP (pulsar enter para IP por defecto): ");
+				gets(ipdest);
 			
-				ipdestl=inet_addr(ipdest);
-				if (ipdestl==INADDR_NONE){
-					struct hostent *host;
-					host=gethostbyname(ipdest);
-					if (host!=NULL){
-						memcpy(&address,host->h_addr_list[0],4);
-						server_in.sin_addr=address;	//IP del servidor
-					}
+				if (strncmp(ipdest,"QUIT",4)==0){
+					return 1;
 				}
-				else
-				{
-					if (strcmp(ipdest,"")==0){
-						strcpy(ipdest,default_ip);
-					}
-					server_in.sin_addr.s_addr=inet_addr(ipdest);//IP del servidor
-				}
+				else{
+						salir=1;
+						ipdestl=inet_addr(ipdest);
+						if (ipdestl==INADDR_NONE){
+							host=gethostbyname(ipdest);
+							if (host!=NULL){
+								memcpy(&address,host->h_addr_list[0],4);
+								server_in.sin_addr=address;	//IP del servidor
+							}
+							else{
+								printf("Error dominio incorrecto\r\n");
+								system("pause null");
+								salir=0;
+							}
 				
+						}
+						else
+						{
+							if (strcmp(ipdest,"")==0){
+								strcpy(ipdest,default_ip);
+							}
+							server_in.sin_addr.s_addr=inet_addr(ipdest);//IP del servidor
+						}
+				}
+			}while(salir==0);
+			printf("%s\r\n",inet_ntoa(server_in.sin_addr));
+			system("pause>nul");
 			//Parametros iniciales
 			server_in.sin_family=AF_INET;	//Familia IP
 			server_in.sin_port=htons(TCP_SERVICE_PORT);		//Puerto Que vamos a usar

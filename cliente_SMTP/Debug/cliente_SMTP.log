@@ -1,27 +1,27 @@
-﻿Compilación iniciada a las 08/11/2015 13:37:19.
-     1>Proyecto "C:\Users\emilio\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\cliente_SMTP.vcxproj" en el nodo 2 (Build destinos).
+﻿Build started 10/11/2015 11:29:33.
+     1>Project "C:\Users\usuario\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\cliente_SMTP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt cliente.c
          cliente.c
-     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(67): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\usuario\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(69): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : vea la declaración de 'gets'
-     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(82): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\usuario\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(93): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : vea la declaración de 'strcpy'
-     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(133): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\usuario\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(147): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : vea la declaración de 'gets'
-     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(138): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\usuario\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(152): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : vea la declaración de 'gets'
-     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(151): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\usuario\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(165): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : vea la declaración de 'gets'
-     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(157): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\usuario\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(171): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(261) : vea la declaración de 'gets'
-     1>c:\users\emilio\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(24): warning C4101: 'comprueba' : variable local sin referencia
+     1>c:\users\usuario\documents\github\pt_practica2_grupo9\cliente_smtp\cliente.c(24): warning C4101: 'comprueba' : variable local sin referencia
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\emilio\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.exe" /INCREMENTAL /NOLOGO wsock32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\emilio\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\emilio\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.lib" /MACHINE:X86 Debug\cliente.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\usuario\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.exe" /INCREMENTAL /NOLOGO wsock32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\usuario\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\usuario\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.lib" /MACHINE:X86 Debug\cliente.obj
          Debug\Source.obj
-         cliente_SMTP.vcxproj -> C:\Users\emilio\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.exe
-     1>Compilación del proyecto terminada "C:\Users\emilio\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\cliente_SMTP.vcxproj" (Build destinos).
+         cliente_SMTP.vcxproj -> C:\Users\usuario\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\Debug\cliente_SMTP.exe
+     1>Done Building Project "C:\Users\usuario\Documents\GitHub\pt_practica2_grupo9\cliente_SMTP\cliente_SMTP.vcxproj" (Build target(s)).
 
-Compilación correcta.
+Build succeeded.
 
-Tiempo transcurrido 00:00:01.97
+Time Elapsed 00:00:00.43
